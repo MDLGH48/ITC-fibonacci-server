@@ -9,8 +9,8 @@ const db = new Datastore({ filename: './storage.db' });
 db.loadDatabase();
 
 function fibonacci(n) {
-    if (n < 2) {
-        return n;
+    if (n <= 2) {
+        return 1;
     }
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
@@ -22,7 +22,7 @@ function wait(time) {
 }
 
 app.get('/fibonacci/:number', async(req, res) => {
-    await wait(600);
+    await wait(100);
     const number = +req.params.number;
     if (number === 42) {
         return res.status(400).send('42 is the meaning of life');
